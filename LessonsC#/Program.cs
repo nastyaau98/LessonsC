@@ -41,7 +41,7 @@ public class Lesson1
         Console.WriteLine("Задача 3. Напишите здесь строку:");
         string? input = Console.ReadLine();
         string reversed = "";
-        for (int i = input.Length - 1; i >= 0; i--) //через for т.к. строка - массив символов, с массивами в следующем дз)
+        for (int i = input.Length - 1; i >= 0; i--) 
         {
             reversed += input[i];
         }
