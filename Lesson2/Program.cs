@@ -3,11 +3,11 @@ public class Lesson1
 {
     static void Main()
     {
-        Task1();
+       // Task1();
         Task2();
-        Task3();
-        Task4();
-        Task5();
+        //Task3();
+        //Task4();
+        //Task5();
     }
 
     static void Task1()
@@ -25,47 +25,54 @@ public class Lesson1
 
     static void Task2()
     {
-        int[] numbers = new int[7];
-
-        Console.WriteLine("Введите 7 целых чисел через запятую:");
-
-        // Получаем ввод от пользователя
-        string input = Console.ReadLine();
-        string[] inputNumbers = input.Split(','); // убираем запятые из ввода
-
-        // Проверяем, что введено ровно 7 чисел
-        if (inputNumbers.Length != 7)
+        int[] numbers = [];
+        for (int i = 0; i < 1;)
         {
-            Console.WriteLine("Ошибка! Нужно ввести ровно 7 чисел.");
-            return;
-        }
-        // Создаем словарь для подсчета количества чисел
-        Dictionary<int, int> numberCounts = new Dictionary<int, int>();
+            Console.WriteLine("Введите 7 целых чисел через запятую:");
 
-        // Подсчитываем количество каждого числа
-        foreach (int num in numbers)
-        {
-            if (numberCounts.ContainsKey(num))
+            // Получаем ввод от пользователя
+            string input = Console.ReadLine();
+            string[] inputNumbers = input!.Split(','); // убираем запятые из строки 
+            // Проверяем, что введено ровно 7 чисел
+            if (inputNumbers.Length != 7)
             {
-                numberCounts[num]++;
+                Console.WriteLine("Ошибка! Ввели не 7 чисел.");
             }
             else
             {
-                numberCounts[num] = 1;
+                bool isAllCount = true;
+                foreach (string number1 in inputNumbers)
+                {
+                    bool success = int.TryParse(number1, out int result);
+                    if (success == false) { isAllCount = false; break; }
+                }
+                if (isAllCount == false)
+                {
+                    Console.WriteLine("Ошибка: введите только числа");
+                }
+                else
+                {
+                    numbers = inputNumbers.Select(int.Parse).ToArray();//переводим из string в int
+                    i = 1;
+                }
             }
+        }
+     
+        // Создаем словарь для подсчета количества чисел
+        Dictionary<int, int> numberCounts = new Dictionary<int, int>();
+
+        foreach (int num in numbers)
+        {
+            numberCounts.TryGetValue(num, out int count);
+            numberCounts[num] = count + 1;
         }
 
         // Выводим результат
         Console.WriteLine("Результат:");
-        bool first = true;
+        //нужно вывести число + количество (num)
         foreach (var pair in numberCounts)
         {
-            if (!first)
-            {
-                Console.Write(", ");
-            }
-            Console.Write($"{pair.Key} ({pair.Value})");
-            first = false;
+            Console.Write($"{pair.Key} ({pair.Value}) , ");
         }
     }
 
