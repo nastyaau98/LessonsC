@@ -3,11 +3,11 @@ public class Lesson1
 {
     static void Main()
     {
-       // Task1();
+        Task1();
         Task2();
-        //Task3();
-        //Task4();
-        //Task5();
+        Task3();
+        Task4();
+        Task5();
     }
 
     static void Task1()
@@ -26,7 +26,7 @@ public class Lesson1
     static void Task2()
     {
         int[] numbers = [];
-        for (int i = 0; i < 1;)
+        for (int i = 0; i < 1;) //цикл чтоб можно было повторно ввести данные после ошибки
         {
             Console.WriteLine("Введите 7 целых чисел через запятую:");
 
@@ -41,7 +41,7 @@ public class Lesson1
             else
             {
                 bool isAllCount = true;
-                foreach (string number1 in inputNumbers)
+                foreach (string number1 in inputNumbers) //проверяем что можем перевести из string в int
                 {
                     bool success = int.TryParse(number1, out int result);
                     if (success == false) { isAllCount = false; break; }
@@ -57,19 +57,18 @@ public class Lesson1
                 }
             }
         }
-     
+
         // Создаем словарь для подсчета количества чисел
         Dictionary<int, int> numberCounts = new Dictionary<int, int>();
 
         foreach (int num in numbers)
         {
-            numberCounts.TryGetValue(num, out int count);
+            numberCounts.TryGetValue(num, out int count); //присваиваем значение ключу и считаем
             numberCounts[num] = count + 1;
         }
 
         // Выводим результат
         Console.WriteLine("Результат:");
-        //нужно вывести число + количество (num)
         foreach (var pair in numberCounts)
         {
             Console.Write($"{pair.Key} ({pair.Value}) , ");
@@ -125,11 +124,11 @@ public class Lesson1
         // Заполняем массив числами от пользователя
         for (int i = 0; i < array.Length; i++)
         {
-            Console.Write($"Элемент {i + 1}: ");
+            Console.Write($"Число {i + 1}: ");
             while (!int.TryParse(Console.ReadLine(), out array[i]))
             {
                 Console.WriteLine("Некорректный ввод. Пожалуйста, введите целое число.");
-                Console.Write($"Элемент {i + 1}: ");
+                Console.Write($"Число {i + 1}: ");
             }
         }
 
@@ -137,7 +136,7 @@ public class Lesson1
         List<int> positiveNumbers = new List<int>();
         List<int> negativeNumbers = new List<int>();
 
-        // Распределяем числа по спискам
+        // Добавляем числа в списки
         foreach (int num in array)
         {
             if (num > 0)
@@ -150,19 +149,17 @@ public class Lesson1
             }
         }
 
-        // Подсчитываем нули (используя только списки)
+        // Подсчитываем нули (через списки)
         int zeroCount = array.Length - positiveNumbers.Count - negativeNumbers.Count;
 
         // Выводим результаты
-        Console.WriteLine($"Количество нулей в массиве: {zeroCount}");
-
-        Console.WriteLine("Положительные числа:");
+        Console.WriteLine($"Количество нулей: {zeroCount}");
+        Console.WriteLine("Все положительные числа из массива:");
         foreach (int num in positiveNumbers)
         {
             Console.WriteLine(num);
         }
-
-        Console.WriteLine("Отрицательные числа:");
+        Console.WriteLine("Все отрицательные числа из массива:");
         foreach (int num in negativeNumbers)
         {
             Console.WriteLine(num);
@@ -174,10 +171,11 @@ public class Lesson1
         // Создаем и заполняем множество
         HashSet<int> numbersSet = new HashSet<int> { 1, 9, 8, -7, -6 };
 
-        // Создаем список для трех чисел от пользователя
+        // Создаем список для трех чисел
         List<int> userNumbers = new List<int>();
         Console.WriteLine("Введите 3 целых числа в диапазоне от -10 до 10:");
 
+        //заполняем список
         for (int i = 0; i < 3; i++)
         {
             int number;
