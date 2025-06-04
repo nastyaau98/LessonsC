@@ -1,12 +1,12 @@
-﻿namespace Lesson1;
+﻿namespace Lesson2;
 public class Lesson1
 {
     static void Main()
     {
-        Task1();
-        Task2();
-        Task3();
-        Task4();
+       // Task1();
+       // Task2();
+       // Task3();
+       // Task4();
         Task5();
     }
 
@@ -52,14 +52,14 @@ public class Lesson1
                 }
                 else
                 {
-                    numbers = inputNumbers.Select(int.Parse).ToArray();//переводим из string в int
+                    numbers = [.. inputNumbers.Select(int.Parse)];//переводим из string в int
                     i = 1;
                 }
             }
         }
 
         // Создаем словарь для подсчета количества чисел
-        Dictionary<int, int> numberCounts = new Dictionary<int, int>();
+        Dictionary<int, int> numberCounts = [];
 
         foreach (int num in numbers)
         {
@@ -77,7 +77,7 @@ public class Lesson1
 
     static void Task3()
     {
-        List<int> numbers = new List<int>();
+        List<int> numbers = [];
 
         Console.WriteLine("Введите 10 целых чисел:");
 
@@ -133,8 +133,8 @@ public class Lesson1
         }
 
         // Создаем списки для положительных и отрицательных чисел
-        List<int> positiveNumbers = new List<int>();
-        List<int> negativeNumbers = new List<int>();
+        List<int> positiveNumbers = [];
+        List<int> negativeNumbers = [];
 
         // Добавляем числа в списки
         foreach (int num in array)
@@ -169,20 +169,19 @@ public class Lesson1
     static void Task5()
     {
         // Создаем и заполняем множество
-        HashSet<int> numbersSet = new HashSet<int> { 1, 9, 8, -7, -6 };
+        HashSet<int> numbers = [1, 9, 8, -7, -6];
 
         // Создаем список для трех чисел
-        List<int> userNumbers = new List<int>();
+        List<int> userNumbers = [];
         Console.WriteLine("Введите 3 целых числа в диапазоне от -10 до 10:");
 
         //заполняем список
         for (int i = 0; i < 3; i++)
         {
-            int number;
             while (true)
             {
                 Console.Write($"Число {i + 1}: ");
-                if (int.TryParse(Console.ReadLine(), out number) && number > -10 && number < 10)
+                if (int.TryParse(Console.ReadLine(), out int number) && number > -10 && number < 10)
                 {
                     userNumbers.Add(number);
                     break;
@@ -195,10 +194,10 @@ public class Lesson1
         }
 
         // Создаем и заполняем словарь
-        Dictionary<int, bool> numbersDict = new Dictionary<int, bool>();
+        Dictionary<int, bool> numbersDict = [];
         foreach (int num in userNumbers)
         {
-            numbersDict[num] = numbersSet.Contains(num);
+            numbersDict[num] = numbers.Contains(num);
         }
 
         // Выводим результаты
