@@ -9,7 +9,7 @@ public class Driver
     public string? LicenseNumber { get; set; }
 
     // Конструктор, принимающий имя
-    public Driver(string name)
+    public Driver (string name)
     {
         Name = name;
     }

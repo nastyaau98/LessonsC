@@ -4,7 +4,7 @@ public class Bus
 {
     public int GarageNumber { get; } // Гаражный номер 
     public Driver _driver; // Поле для хранения водителя
-    public Conductor? _conductor; // Кондуктор
+    public Conductor? Conductor; // Кондуктор
     public List<Passenger> _passengers; // Список пассажиров
     public int Mileage { get; set; } // Километраж
 
@@ -28,7 +28,7 @@ public class Bus
     public Bus(int garageNumber, Driver driver)
     {
         GarageNumber = garageNumber;
-        Driver = driver; // Проверка происходит в свойстве
+        Driver = driver; 
         _passengers = [];
         Mileage = 0;
     }

@@ -6,33 +6,35 @@ class Program
 {
     static void Main()
     {
-        // Создаем трех водителей
-        Driver driver1 = new Driver("Кирилл Соснин") { LicenseNumber = "99ФАР" };  
-        Driver driver2 = new Driver("Макар Крюков") { LicenseNumber = "999ЛА" };  
-        Driver driver3 = new Driver("Кузьма Хорошев") { LicenseNumber = null }; 
+        // создаем трех водителей
+        Driver driver1 = new("Кирилл Соснин") { LicenseNumber = "99ФАР" };  
+        Driver driver2 = new("Макар Крюков") { LicenseNumber = "999ЛА" };  
+        Driver driver3 = new("Кузьма Хорошев") { LicenseNumber = null }; 
 
-        // Создаем кондуктора
-        Conductor conductor = new Conductor("Катерина Измайлова");
+        // создаем кондуктора
+        Conductor conductor = new("Катерина Измайлова");
 
-        // Создаем два автобуса
-        Bus bus1 = new Bus(101, driver1);  
-        bus1._conductor = conductor;
+        // создаем два автобуса
+        Bus bus1 = new(101, driver1)
+        {
+            Conductor = conductor
+        };
 
         driver2.LicenseNumber = "99ЛАК";
-        Bus bus2 = new Bus(202, driver2);
+        Bus bus2 = new(202, driver2);
 
-        // Выводим информацию об экипажах
-        PrintCrewInfo(bus1);
-        PrintCrewInfo(bus2);
+        // выводим информацию об экипажах
+        PrintInfo(bus1);
+        PrintInfo(bus2);
     }
-
-    static void PrintCrewInfo(Bus bus)
+    //метод для вывода информации
+    static void PrintInfo(Bus bus)
     {
         Console.Write($"Автобус {bus.GarageNumber}. Водитель: {bus.Driver.Name}");
 
-        if (bus._conductor != null)
+        if (bus.Conductor != null)
         {
-            Console.WriteLine($". Кондуктор: {bus._conductor.Name}");
+            Console.WriteLine($". Кондуктор: {bus.Conductor.Name}");
         }
         else
         {
