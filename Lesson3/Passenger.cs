@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace Lesson3;
 
-public class Passenger
+public class Passenger: Human
 {
-    public string Name { get; }
+   
     public bool HasTicket { get; set; }
 
-    public Passenger(string name, bool hasTicket = false)
+    public Passenger(string name, bool hasTicket = false):base(name)
     {
-        Name = name;
-        HasTicket = hasTicket;
+       HasTicket = hasTicket;
     }
 }

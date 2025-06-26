@@ -1,21 +1,18 @@
 ﻿namespace Lesson3;
 
-public class Driver
+public class Driver : Human
 {
-    // Свойство "Имя водителя"
-    public string Name { get; }
-
+    
     // Свойство "Номер водительского удостоверения"
     public string? LicenseNumber { get; set; }
 
     // Конструктор, принимающий имя
-    public Driver (string name)
+    public Driver(string name) : base(name)
     {
-        Name = name;
     }
 
     // Метод проверки валидности ВУ
-    public bool IsLicenseValid()
+    public bool LicenseValidation()
     {
        if (string.IsNullOrEmpty(LicenseNumber))
             return false;
@@ -25,10 +22,10 @@ public class Driver
             return false;
 
         // Проверяем, что удостоверение состоит из 2 цифр и 3 заглавных букв
-        int digitCount = 0;
-        int letterCount = 0;
+        var digitCount = 0;
+        var letterCount = 0;
 
-        foreach (char c in LicenseNumber)
+        foreach (var c in LicenseNumber)
         {
             if (char.IsDigit(c)) //является ли цифрой
                 digitCount++;
